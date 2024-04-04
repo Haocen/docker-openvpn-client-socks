@@ -11,6 +11,7 @@ FROM alpine
 LABEL org.opencontainers.image.source="https://github.com/Haocen/docker-openvpn-client-socks"
 
 COPY sockd.sh /usr/local/bin/
+COPY entrypoint.sh /
 
 RUN true \
     && echo "http://dl-4.alpinelinux.org/alpine/edge/community" >> /etc/apk/repositories \
@@ -21,7 +22,4 @@ RUN true \
 
 COPY sockd.conf /etc/
 
-ENTRYPOINT [ \
-    "/bin/bash", "-c", \
-    "cd /etc/openvpn && /usr/sbin/openvpn --config *.conf --script-security 2 --up /usr/local/bin/sockd.sh" \
-    ]
+ENTRYPOINT [ "/entrypoint.sh" ]
