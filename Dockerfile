@@ -21,4 +21,6 @@ RUN true \
 
 COPY sockd.conf /etc/
 
+ENV PORT=1080
+
 ENTRYPOINT [ "/entrypoint.sh" ]
