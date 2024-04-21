@@ -21,8 +21,11 @@ jobs:
           registry: ghcr.io
           username: ${{github.actor}}
           password: ${{secrets.GITHUB_TOKEN}}
-
-      - name: "Build and Push Image"
-        run: |
-          docker build . --tag ghcr.io/haocen/docker-openvpn-client-socks:latest
-          docker push ghcr.io/haocen/docker-openvpn-client-socks:latest
+      
+      - name: Build and push
+        uses: docker/build-push-action@master
+        with:
+          context: .
+          platforms: linux/amd64,linux/arm64
+          push: true
+          tags: ghcr.io/haocen/docker-openvpn-client-socks:latest
