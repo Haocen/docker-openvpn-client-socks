@@ -14,7 +14,6 @@ COPY sockd.sh /usr/local/bin/
 COPY entrypoint.sh /
 
 RUN true \
-    && echo "http://dl-4.alpinelinux.org/alpine/edge/community" >> /etc/apk/repositories \
     && apk add --update-cache dante-server openvpn bash openresolv openrc \
     && rm -rf /var/cache/apk/* \
     && chmod a+x /usr/local/bin/sockd.sh \
