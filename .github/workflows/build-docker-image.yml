@@ -6,23 +6,23 @@ on:
       - main
 
 jobs:
-      push-store-image:
-        runs-on: ubuntu-latest
-        defaults:
-          run:
-            working-directory: './'
-        steps:
-          - name: 'Checkout GitHub Action'
-            uses: actions/checkout@main
+  push-store-image:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: "./"
+    steps:
+      - name: "Checkout GitHub Action"
+        uses: actions/checkout@main
 
-          - name: 'Login to GitHub Container Registry'
-            uses: docker/login-action@master
-            with:
-              registry: ghcr.io
-              username: ${{github.actor}}
-              password: ${{secrets.GITHUB_TOKEN}}
+      - name: "Login to GitHub Container Registry"
+        uses: docker/login-action@master
+        with:
+          registry: ghcr.io
+          username: ${{github.actor}}
+          password: ${{secrets.GITHUB_TOKEN}}
 
-          - name: 'Build and Push Image'
-            run: |
-              docker build . --tag ghcr.io/haocen/docker-openvpn-client-socks:latest
-              docker push ghcr.io/haocen/docker-openvpn-client-socks:latest
+      - name: "Build and Push Image"
+        run: |
+          docker build . --tag ghcr.io/haocen/docker-openvpn-client-socks:latest
+          docker push ghcr.io/haocen/docker-openvpn-client-socks:latest
