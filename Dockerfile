@@ -8,6 +8,8 @@
 
 FROM alpine
 
+LABEL org.opencontainers.image.source="https://github.com/Haocen/docker-openvpn-client-socks"
+
 COPY sockd.sh /usr/local/bin/
 
 RUN true \
