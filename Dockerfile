@@ -14,7 +14,7 @@ COPY sockd.sh /usr/local/bin/
 COPY entrypoint.sh /
 
 RUN true \
-    && apk add --update-cache dante-server openvpn bash openresolv openrc sed \
+    && apk add --update-cache dante-server openvpn bash openresolv openrc sed curl \
     && rm -rf /var/cache/apk/* \
     && chmod a+x /usr/local/bin/sockd.sh \
     && true
