@@ -4,7 +4,5 @@ set -e
 if pgrep sockd > /dev/null; then
   echo "An existing sockd process was found. Terminating it."
   pkill sockd
-else
-  echo "No existing sockd process found. Starting a new one."
 fi
 /usr/sbin/sockd -D
