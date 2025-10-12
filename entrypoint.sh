@@ -3,6 +3,8 @@
 cd /etc/openvpn
 
 while true; do
+    echo "Setting sockd debug level to $SOCKD_DEBUG_LEVEL"
+    sed -i -e "s/^debug: 0/debug: $SOCKD_DEBUG_LEVEL/g" /etc/sockd.conf
     echo "Setting sockd port to $PORT"
     sed -i -e "s/^internal: eth0 port.*$/internal: eth0 port = $PORT/g" /etc/sockd.conf
     echo "Setting interface to $INTERFACE"

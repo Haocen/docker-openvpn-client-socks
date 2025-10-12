@@ -24,5 +24,6 @@ COPY sockd.conf /etc/
 ENV PORT=1080
 ENV TUN_DEVICE=tun0
 ENV INTERFACE=eth0
+ENV SOCKD_DEBUG_LEVEL=0
 
 ENTRYPOINT [ "/entrypoint.sh" ]
