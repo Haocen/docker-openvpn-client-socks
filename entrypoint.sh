@@ -5,6 +5,8 @@ cd /etc/openvpn
 while true; do
     echo "Setting sockd port to $PORT"
     sed -i -e "s/^internal: eth0 port.*$/internal: eth0 port = $PORT/g" /etc/sockd.conf
+    echo "Setting interface to $INTERFACE"
+    sed -i -e "s/^internal: eth0 port/internal: $INTERFACE port/g" /etc/sockd.conf
     echo "Setting tun device to $TUN_DEVICE"
     sed -i -e "s/^external: tun0$/external: $TUN_DEVICE/g" /etc/sockd.conf
     echo "Starting OpenVPN"
